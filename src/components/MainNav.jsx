@@ -20,27 +20,31 @@
 //     );
 // }
 
-import { Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
 export default function MainNav({ brand }) {
   return (
-    <Navbar expand="lg" className="bg-success navbar-dark">
+    <Navbar expand="lg" className="bg-success navbar-dark" fixed='top'>
       <Container fluid>
         <Navbar.Brand href='/'>{brand}</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
+            <Nav.Link href='/'>Home</Nav.Link>
+            <Nav.Link href="#sessionNotes">Session Notes</Nav.Link>
+            <Nav.Link href="#partyInfo">Party Info</Nav.Link>
             <NavDropdown title="Extras" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">NPC Generator</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
+              <NavDropdown.Item href="#action/npcGenerator">NPC Generator</NavDropdown.Item>
+              <NavDropdown.Item href="#action/tavernShopGenerator">
                 Tavern/Shop Generator
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Loot Tables</NavDropdown.Item>
+              <NavDropdown.Item href="#action/lootTable">Loot Tables</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
+              <NavDropdown.Item href="#action/diceRoller">
                 Dice Roller
               </NavDropdown.Item>
             </NavDropdown>
