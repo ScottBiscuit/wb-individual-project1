@@ -1,6 +1,7 @@
 import MainNav from "./components/MainNav.jsx";
 import SessionNotes from "./components/SessionNotes.jsx";
 import PartyTabs from "./components/PartyTabs.jsx"
+import { Outlet } from "react-router-dom";
 
 
 export default function App() {
@@ -15,9 +16,11 @@ export default function App() {
           { url: '#', text: 'Login' },
         ]}
       />
-      <SessionNotes />
-      <PartyTabs />
+      {/* <SessionNotes />
+      <PartyTabs /> */}
+      <Outlet />
     </>
   )
 }
+
 
