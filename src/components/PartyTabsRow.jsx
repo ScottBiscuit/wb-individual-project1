@@ -1,7 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
-import { Row } from "react-bootstrap";
+import { Row, Col, Stack } from "react-bootstrap";
 import EditableRowModeButtons from "./EditableRowModeButtons";
+import EditableNameCell from "./EditableNameCell";
+import EditableRaceCell from "./EditableRaceCell";
+import EditableClassCell from "./EditableClassCell";
+import EditableLevelCell from "./EditableLevelCell";
 
 export default function PartyTabsRow({ initialPCData, initialIsEditing, onDeleteRow }){
     const [isEditing, setIsEditing] = useState(initialIsEditing);
@@ -33,31 +37,13 @@ export default function PartyTabsRow({ initialPCData, initialIsEditing, onDelete
 
   return (
     <Row>
-        <EditableImageCell // TODO change image
+{/*     TODO change image
+        <EditableImageCell 
         value={pcImg} 
         isEditing={isEditing}
         onValueChange={setPCImg} 
-        />
-        <EditableNameCell // TODO change name
-        value={pcName} 
-        isEditing={isEditing}
-        onValueChange={setPCName} 
-        />
-        <EditableRaceCell // TODO change race
-        value={pcRace} 
-        isEditing={isEditing}
-        onValueChange={setPCRace}  
-        />
-        <EditableClassCell // TODO change class
-        value={pcClass} 
-        isEditing={isEditing}
-        onValueChange={setPCClass}  
-        />
-        <EditableLevelCell // TODO change level
-        value={pcLevel} 
-        isEditing={isEditing}
-        onValueChange={setPCLevel}  
-        />
+        /> */}
+       
         <Col xs={{ span: 2 }}>
             <img src='./images/cawlin.png' width='100px'/>
         </Col>
@@ -66,29 +52,24 @@ export default function PartyTabsRow({ initialPCData, initialIsEditing, onDelete
                 <div className="p-2">Name:</div>
                 <div className="p-2">Race:</div>
                 <div className="p-2">Class:</div>
+                <div className="p-2">Level:</div>
             </Stack>
         </Col>
         <Col xs={{ span: 7 }}>
             <Stack gap={0}>
-                <div className="p-2">Cawlin</div>
-                <div className="p-2">Kenku</div>
-                <div className="p-2">Rogue | Warlock - Hexblade </div>
+                <EditableNameCell value={pcName} isEditing={isEditing} onValueChange={setPCName} />
+                <EditableRaceCell value={pcRace} isEditing={isEditing} onValueChange={setPCRace} />
+                <EditableClassCell value={pcClass} isEditing={isEditing} onValueChange={setPCClass} />
+                <EditableLevelCell value={pcLevel} isEditing={isEditing} onValueChange={setPCLevel} />
             </Stack>
         </Col>
-        <EditableRowModeButtons 
-        isEditing={isEditing} 
-        onEditClick={setEditMode}
-        onDeleteClick={onDeleteRow}
-        onSaveClick={setNormalMode}
-        />
+        <Col xs={{ span: 1 }}>
+            <EditableRowModeButtons isEditing={isEditing} onEditClick={setEditMode} onDeleteClick={onDeleteRow} onSaveClick={setNormalMode} />
+        </Col>
     </Row>
   );
 }
 
-<Row>
-
-                    <Col xs={{ span: 1 }}>Edit</Col>
-                </Row>
                 // <Row>
                 //     <Col xs={{ span: 2 }}>
                 //         <img src='./images/beast_boy.jpeg' width='100px'/>

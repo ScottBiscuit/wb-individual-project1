@@ -7,15 +7,15 @@ import Tabs from 'react-bootstrap/Tabs';
 import { useState } from 'react';
 import axios from 'axios';
 import PartyTabsRow from './PartyTabsRow.jsx';
+import PartyTabsAddPCButton from './PartyTabsAddPCButton.jsx';
 
 
 
 export default function PartyTabs({initialPartyList}) {
     const [partyList, setPartyList] = useState(initialPartyList);
 
-    // TODO change to correct Row Add
-    const addCombatRowHero = async (pcId) => {
-        const { data } = await axios.post('/api/party', { name: 'Hero', hero: true });
+    const addNewPlayer = async (pcId) => {
+        const { data } = await axios.post('/api/party', { name: 'New Player Name' });
         const newParty = { ...data, isEditing: true };
         setPartyList([...partyList, newParty]);
       };
@@ -32,7 +32,7 @@ export default function PartyTabs({initialPartyList}) {
         }
     };
 
-    const rows = partyList.map(({ pcId, pcImg, pcName, pcRace, pcClass, pcLevel, isEditing }) => (
+    const playerRows = partyList.map(({ pcId, pcImg, pcName, pcRace, pcClass, pcLevel, isEditing }) => (
         <PartyTabsRow 
         key={ pcId }
         initialCombatData={{ pcId, pcImg, pcName, pcRace, pcClass, pcLevel }}
@@ -49,11 +49,11 @@ export default function PartyTabs({initialPartyList}) {
         className="mb-3 bg-success-subtle"
         justify
         >
-        <Tab eventKey="players" title="" disabled>
+        <Tab eventKey="blank" title="" disabled>
         </Tab>
         <Tab eventKey="profile" title="Basic Info">
             <Container className='bg-success-subtle'>
-                {rows}
+                {playerRows}
             </Container>
         </Tab>
 
@@ -182,6 +182,9 @@ export default function PartyTabs({initialPartyList}) {
             </Container>
         </Tab>
         </Tabs>
+        <Row>
+            <PartyTabsAddPCButton onClick={addNewPlayer}/>
+        </Row>
     </Container>
   );
 }
