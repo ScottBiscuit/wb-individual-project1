@@ -6,16 +6,16 @@
 
 // Character Data
 [
-    { pcId: 0, pcName: 'Cawlin', pcImg: 'cawlin.png', pcRace: 'Kenku', pcClass: 'Rogue 1, Warlock - Hexblade 6',
+    { pcId: 0, pcName: 'Cawlin', pcImg: 'cawlin.png', pcRace: 'Kenku', pcClass: 'Rogue | Warlock - Hexblade', pcLevel: 7,
         pcBackstory: 'Lots of words here',
         pcAllies: 'Friendly Person', pcGoals: 'Do things, and stuff', pcExtras: 'Random stuff here' },
-    { pcId: 1, pcName: 'Garfield Beast Boy Logan', pcImg: 'beast_boy.png', pcRace: 'Goblin', pcClass: 'Druid - Moon 7',
+    { pcId: 1, pcName: 'Garfield Beast Boy Logan', pcImg: 'beast_boy.png', pcRace: 'Goblin', pcClass: 'Druid - Moon', pcLevel: 7,
         pcBackstory: 'Lots of words here',
         pcAllies: 'Friendly Person', pcGoals: 'Do things, and stuff', pcExtras: 'Random stuff here' },
-    { pcId: 2, pcName: 'Bender Rodriguez', pcImg: 'bender.png', pcRace: 'Warforged', pcClass: 'Artificer - Armorer 7',
+    { pcId: 2, pcName: 'Bender Rodriguez', pcImg: 'bender.png', pcRace: 'Warforged', pcClass: 'Artificer - Armorer', pcLevel: 7,
         pcBackstory: 'Lots of words here',
         pcAllies: 'Friendly Person', pcGoals: 'Do things, and stuff', pcExtras: 'Random stuff here' },
-    { pcId: 3, pcName: 'Ahsoka Tano', pcImg: 'ahsoka.png', pcRace: 'Hobgoblin', pcClass: 'Fighter - Psi Warrior 7',
+    { pcId: 3, pcName: 'Ahsoka Tano', pcImg: 'ahsoka.png', pcRace: 'Hobgoblin', pcClass: 'Fighter - Psi Warrior', pcLevel: 7,
         pcBackstory: 'Lots of words here',
         pcAllies: 'Friendly Person', pcGoals: 'Do things, and stuff', pcExtras: 'Random stuff here' },
 ],

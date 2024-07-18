@@ -6,12 +6,13 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import MainNav from './components/MainNav.jsx';
 import PartyTabs from './components/PartyTabs.jsx';
 import SessionNotes from './components/SessionNotes.jsx';
-import PreviewCards from './components/PreviewCards.jsx';
+import Home from './components/Home.jsx';
 import 'bootstrap/dist/css/bootstrap.css';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
+      <Route index element={<Home />} />
       <Route path='/party' element={<PartyTabs />} />
       <Route path='/session_notes' element={<SessionNotes />} />
     </Route>

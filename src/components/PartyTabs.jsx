@@ -4,102 +4,60 @@ import Row from 'react-bootstrap/Row';
 import Stack from 'react-bootstrap/Stack';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import { useState } from 'react';
+import axios from 'axios';
+import PartyTabsRow from './PartyTabsRow.jsx';
 
-export default function PartyTabs() {
+
+
+export default function PartyTabs({initialPartyList}) {
+    const [partyList, setPartyList] = useState(initialPartyList);
+
+    // TODO change to correct Row Add
+    const addCombatRowHero = async (pcId) => {
+        const { data } = await axios.post('/api/party', { name: 'Hero', hero: true });
+        const newParty = { ...data, isEditing: true };
+        setPartyList([...partyList, newParty]);
+      };
+
+    const deletePartyRow = async (pcId) => {
+        const { data } = await axios.delete(`/api/party/${pcId}/delete`);
+
+        if (!data.error) {
+            const newPartyList = [...partyList];
+
+            const index = newPartyList.findIndex((party) => party.pcId === data.pcId);
+            newPartyList.splice(index, 1);
+            setPartyList(newPartyList);
+        }
+    };
+
+    const rows = partyList.map(({ pcId, pcImg, pcName, pcRace, pcClass, pcLevel, isEditing }) => (
+        <PartyTabsRow 
+        key={ pcId }
+        initialCombatData={{ pcId, pcImg, pcName, pcRace, pcClass, pcLevel }}
+        initialIsEditing={ isEditing }
+        onDeleteRow={ () => deletePartyRow(pcId) }
+        />
+    ));
+
   return (
     <Container fluid>
         <Tabs
         defaultActiveKey="profile"
-        id="justify-tab-example"
+        // id="justify-tab-example"
         className="mb-3 bg-success-subtle"
         justify
         >
-        <Tab eventKey="players" title="Player Characters" disabled>
+        <Tab eventKey="players" title="" disabled>
         </Tab>
         <Tab eventKey="profile" title="Basic Info">
             <Container className='bg-success-subtle'>
-                <Row>
-                    <Col xs={{ span: 2 }}>
-                        <img src='./images/cawlin.png' width='100px'/>
-                    </Col>
-                    <Col xs={{ span: 2 }}>
-                        <Stack gap={0}>
-                            <div className="p-2">Name:</div>
-                            <div className="p-2">Race:</div>
-                            <div className="p-2">Class:</div>
-                        </Stack>
-                    </Col>
-                    <Col xs={{ span: 7 }}>
-                        <Stack gap={0}>
-                            <div className="p-2">Cawlin</div>
-                            <div className="p-2">Kenku</div>
-                            <div className="p-2">Rogue 1, Warlock - Hexblade 6</div>
-                        </Stack>
-                    </Col>
-                    <Col xs={{ span: 1 }}>Edit</Col>
-                </Row>
-                <Row>
-                    <Col xs={{ span: 2 }}>
-                        <img src='./images/beast_boy.jpeg' width='100px'/>
-                    </Col>
-                    <Col xs={{ span: 2 }}>
-                        <Stack gap={0}>
-                            <div className="p-2">Name:</div>
-                            <div className="p-2">Race:</div>
-                            <div className="p-2">Class:</div>
-                        </Stack>
-                    </Col>
-                    <Col xs={{ span: 7 }}>
-                        <Stack gap={0}>
-                            <div className="p-2">Garfield Beast Boy Logan</div>
-                            <div className="p-2">Goblin</div>
-                            <div className="p-2">Druid - Moon 7</div>
-                        </Stack>
-                    </Col>
-                    <Col xs={{ span: 1 }}>Edit</Col>
-                </Row>
-                <Row>
-                    <Col xs={{ span: 2 }}>
-                        <img src='./images/bender_rodriguez.png' width='100px'/>
-                    </Col>
-                    <Col xs={{ span: 2 }}>
-                        <Stack gap={0}>
-                            <div className="p-2">Name:</div>
-                            <div className="p-2">Race:</div>
-                            <div className="p-2">Class:</div>
-                        </Stack>
-                    </Col>
-                    <Col xs={{ span: 7 }}>
-                        <Stack gap={0}>
-                            <div className="p-2">Bender Rodriguez</div>
-                            <div className="p-2">Warforged</div>
-                            <div className="p-2">Artificer - Armorer 7</div>
-                        </Stack>
-                    </Col>
-                    <Col xs={{ span: 1 }}>Edit</Col>
-                </Row>
-                <Row>
-                    <Col xs={{ span: 2 }}>
-                        <img src='./images/ahsoka_tano.jpeg' width='100px'/>
-                    </Col>
-                    <Col xs={{ span: 2 }}>
-                        <Stack gap={0}>
-                            <div className="p-2">Name:</div>
-                            <div className="p-2">Race:</div>
-                            <div className="p-2">Class:</div>
-                        </Stack>
-                    </Col>
-                    <Col xs={{ span: 7 }}>
-                        <Stack gap={0}>
-                            <div className="p-2">Ahsoka Tano</div>
-                            <div className="p-2">Hobgoblin</div>
-                            <div className="p-2">Fighter - Psi Warrior 7</div>
-                        </Stack>
-                    </Col>
-                    <Col xs={{ span: 1 }}>Edit</Col>
-                </Row>
+                {rows}
             </Container>
         </Tab>
+
+{/* TODO convert backstory, goals and extras tabs like basic info/profile */}
 
         <Tab eventKey="backstory" title="Backstory">
         <Container className='bg-success-subtle'>
