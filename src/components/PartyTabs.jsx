@@ -35,7 +35,7 @@ export default function PartyTabs({initialPartyList}) {
     const playerRows = partyList.map(({ pcId, pcImg, pcName, pcRace, pcClass, pcLevel, isEditing }) => (
         <PartyTabsRow 
         key={ pcId }
-        initialCombatData={{ pcId, pcImg, pcName, pcRace, pcClass, pcLevel }}
+        initialPartyData={{ pcId, pcImg, pcName, pcRace, pcClass, pcLevel }}
         initialIsEditing={ isEditing }
         onDeleteRow={ () => deletePartyRow(pcId) }
         />

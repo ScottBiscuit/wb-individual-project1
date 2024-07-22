@@ -34,8 +34,8 @@ export default function MainNav({ brand }) {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href='/'>Home</Nav.Link>
-            <Nav.Link href="/session_notes">Session Notes</Nav.Link>
             <Nav.Link href="/party">Party Info</Nav.Link>
+            <Nav.Link href="/session_notes">Session Notes</Nav.Link>
             <NavDropdown title="Extras" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/npcGenerator">NPC Generator</NavDropdown.Item> 
               <NavDropdown.Item href="#action/tavernShopGenerator">

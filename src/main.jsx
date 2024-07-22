@@ -13,7 +13,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index element={<Home />} />
-      <Route path='/party' element={<PartyTabs />} />
+      <Route path='/party' element={<PartyTabs />} loader={() => initialPartyList}/>
       <Route path='/session_notes' element={<SessionNotes />} />
     </Route>
   )
