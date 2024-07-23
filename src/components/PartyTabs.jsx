@@ -8,11 +8,12 @@ import { useState } from 'react';
 import axios from 'axios';
 import PartyTabsRow from './PartyTabsRow.jsx';
 import PartyTabsAddPCButton from './PartyTabsAddPCButton.jsx';
+import { Link, useLoaderData } from 'react-router-dom';
 
 
 
-export default function PartyTabs({initialPartyList}) {
-    const [partyList, setPartyList] = useState(initialPartyList);
+export default function PartyTabs({}) {
+    const { party } = useLoaderData();
 
     const addNewPlayer = async (pcId) => {
         const { data } = await axios.post('/api/party', { name: 'New Player Name' });
