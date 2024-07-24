@@ -14,11 +14,15 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index element={<Home />} />
-      <Route path='/party' element={<PartyTabs />} loader={async () => {
+      <Route path='party' element={<PartyTabs />} loader={async () => {
         const res = await axios.get('/api/party')
-        return {character: res.data}
+        return {party: res.data}
       } }/>
-      <Route path='/session_notes' element={<SessionNotes />} />
+      <Route path='sessionNotes' element={<SessionNotes />} loader={async () => {
+        const res = await axios.get('/api/sessionNotes')
+        return {sessionNotes: res.data}
+      }}
+      />
     </Route>
   )
 )

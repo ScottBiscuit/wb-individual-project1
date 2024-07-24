@@ -110,7 +110,7 @@ SessionNote.init(
       type: DataTypes.INTEGER,
     },
     sesDate: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false
     },
     sesPartyLvl: {

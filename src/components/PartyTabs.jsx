@@ -12,7 +12,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 
 
-export default function PartyTabs({}) {
+export default function PartyTabs() {
     const { party } = useLoaderData();
 
     const addNewPlayer = async (pcId) => {
@@ -33,7 +33,7 @@ export default function PartyTabs({}) {
         }
     };
 
-    const playerRows = partyList.map(({ pcId, pcImg, pcName, pcRace, pcClass, pcLevel, isEditing }) => (
+    const playerRows = party.map(({ pcId, pcImg, pcName, pcRace, pcClass, pcLevel, isEditing }) => (
         <PartyTabsRow 
         key={ pcId }
         initialPartyData={{ pcId, pcImg, pcName, pcRace, pcClass, pcLevel }}
