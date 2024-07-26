@@ -16,7 +16,7 @@ for (let i = 0; i < 5; i++){
 const charactersToCreate = [];
 for (let i = 0; i < 5; i++){
     const pcName = `character${i}`
-    charactersToCreate.push(Character.create({pcName, pcRace: 'human', pcClass: 'wizard', pcLevel: 1, pcImg: 'img file here', pcBackstory: `The backstory of ${pcName}`, pcAllies: `Possible allies of ${pcName}`, pcGoals: `Goals of ${pcName}`, pcExtras: `Random extra facts involving ${pcName}` }))
+    charactersToCreate.push(Character.create({pcName, pcRace: 'human', pcClass: 'wizard', pcLevel: 1, pcImg: './images/img_default.jpg', pcBackstory: `The backstory of ${pcName}`, pcAllies: `Possible allies of ${pcName}`, pcGoals: `Goals of ${pcName}`, pcExtras: `Random extra facts involving ${pcName}` }))
 }
 
 const sessionNotesToCreate = [];

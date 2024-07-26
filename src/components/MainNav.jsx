@@ -24,8 +24,20 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import LogoutButton from './LogoutButton';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function MainNav({ brand }) {
+  const navigate = useNavigate();
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    const res= await axios.post('/api/logout');
+    if (res.data.success){
+      navigate('/')
+    }
+  }
   return (
     <Navbar expand="lg" className="bg-success navbar-dark" sticky='top'>
       <Container fluid>
@@ -33,7 +45,7 @@ export default function MainNav({ brand }) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href='/'>Home</Nav.Link>
+            <Nav.Link href='login'>Login</Nav.Link>
             <Nav.Link href="party">Party Info</Nav.Link>
             <Nav.Link href="sessionNotes">Session Notes</Nav.Link>
             <NavDropdown title="Extras" id="basic-nav-dropdown">
@@ -47,6 +59,7 @@ export default function MainNav({ brand }) {
                 Dice Roller
               </NavDropdown.Item>
             </NavDropdown>
+            <LogoutButton onLogout={handleLogout} />
           </Nav>
         </Navbar.Collapse>
       </Container>
