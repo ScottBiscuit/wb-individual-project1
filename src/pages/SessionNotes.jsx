@@ -5,6 +5,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import { useLoaderData } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import AccordionItem from '../components/accordion/AccordionItem';
+import ModalAddSesNote from '../components/accordion/ModalAddSesNote';
 
 export default function SessionNotes() {
   const { sessionNotes } = useLoaderData();
@@ -22,10 +23,11 @@ export default function SessionNotes() {
               <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat recusandae facere sunt asperiores iure! Facere nostrum, pariatur officia accusamus accusantium doloremque totam quibusdam aliquam maiores repellendus hic sapiente officiis aut.
               </div>
               <div>
-                <Button as="input" type="button" value="Edit" /> 
+                <Button as="input" type="button" value="Edit" />
               </div>
             </Accordion.Body>
         </Accordion.Item>
+        <ModalAddSesNote />
         <div>
         {sessionNotesList}
         </div>

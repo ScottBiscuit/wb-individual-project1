@@ -49,13 +49,14 @@ export default function MainNav({ brand }) {
             <Nav.Link href="party">Party Info</Nav.Link>
             <Nav.Link href="sessionNotes">Session Notes</Nav.Link>
             <NavDropdown title="Extras" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/npcGenerator">NPC Generator</NavDropdown.Item> 
-              <NavDropdown.Item href="#action/tavernShopGenerator">
+              <NavDropdown.Item disabled>Coming Soon...</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/npcGenerator" disabled>NPC Generator</NavDropdown.Item> 
+              <NavDropdown.Item href="#action/tavernShopGenerator" disabled>
                 Tavern/Shop Generator
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/lootTable">Loot Tables</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/diceRoller">
+              <NavDropdown.Item href="#action/lootTable" disabled>Loot Tables</NavDropdown.Item>
+              <NavDropdown.Item href="#action/diceRoller" disabled>
                 Dice Roller
               </NavDropdown.Item>
             </NavDropdown>
