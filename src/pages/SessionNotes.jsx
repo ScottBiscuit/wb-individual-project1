@@ -4,14 +4,16 @@ import Col from 'react-bootstrap/Col';
 import Accordion from 'react-bootstrap/Accordion';
 import { useLoaderData } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import AccordionItem from '../components/accordion/AccordionItem';
+import AccordionSesItem from '../components/accordion/AccordionSesItem';
 import ModalAddSesNote from '../components/accordion/ModalAddSesNote';
+import { useState } from 'react';
 
 export default function SessionNotes() {
-  const { sessionNotes } = useLoaderData();
+
+  const [sessionNotes, setNotes] = useState(useLoaderData().sessionNotes);
 
   const sessionNotesList = sessionNotes.map((sesNote) => (
-    <AccordionItem key={sesNote.sesId} sesNote = {sesNote}/>
+    <AccordionSesItem key={sesNote.sesId} sesNote = {sesNote}/>
   ));
 
   return (
@@ -27,7 +29,7 @@ export default function SessionNotes() {
               </div>
             </Accordion.Body>
         </Accordion.Item>
-        <ModalAddSesNote />
+        <ModalAddSesNote setNotes={setNotes} sessionNotes={sessionNotes}/>
         <div>
         {sessionNotesList}
         </div>

@@ -6,7 +6,6 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { useState } from 'react';
 import axios from 'axios';
-import PartyTabsAddPCButton from '../components/PartyTabsAddPCButton.jsx';
 import { Link, useLoaderData } from 'react-router-dom';
 import { Button } from 'react-bootstrap'
 
@@ -124,9 +123,9 @@ export default function PartyTabs() {
             <Tab eventKey="extras" title="Extras">{playerExtrasRows}</Tab>
         </Tabs>
         <Row>
-            <PartyTabsAddPCButton 
+            {/* <PartyTabsAddPCButton 
             // onClick={addNewPlayer}
-            />
+            /> */}
         </Row>
     </Container>
   );
