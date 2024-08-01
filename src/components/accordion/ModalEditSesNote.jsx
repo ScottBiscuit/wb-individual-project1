@@ -1,13 +1,71 @@
 import { useState } from 'react';
+import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
-export default function ModalEditSesNote() {
+export default function ModalEditSesNote({ setNotes, sessionNotes, sesNote }) {
   const [show, setShow] = useState(false);
-
+  
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [formState, setFormState] = useState(
+    {
+      sesNumber: sesNote.sesNumber,
+      sesDate: sesNote.sesDate,
+      sesPartyLvl: sesNote.sesPartyLvl,
+      sesNotes: sesNote.sesNotes
+    });
+
+  const handleChange = (e) => {
+      setFormState({ ...formState, [e.target.name]: e.target.value });
+    };
+
+  const [errors, setErrors] = useState("");
+
+  const validateForm = () => {
+    if (formState.sesNumber && formState.sesDate && formState.sesPartyLvl && formState.sesNotes) {
+      setErrors("");
+      return true;
+    } else {
+      let errorFields = [];
+      for (const [key, value] of Object.entries(formState)) {
+        if (!value) {
+          errorFields.push(key);
+        }
+      }
+      setErrors(errorFields.join(", "));
+      return false;
+    }
+  };
+    
+  const handleSubmit = () => {
+
+    if (!validateForm()) return;
+
+    axios.put(`/api/sessionNotes/${sesNote.sesId}`, 
+      { sesId: formState.sesId, sesNumber: formState.sesNumber, sesDate: formState.sesDate, sesPartyLvl: formState.sesPartyLvl, sesNotes: formState.sesNotes }).then((res) => {
+        // TODO remove previous info from session notes and replace with res.data
+
+        
+        const editedResData = sesNote.sesId
+
+        function findEdit(sessionNotes, editedResData){
+          for(let i = 0; i < sessionNotes.length; i++){
+            if(sessionNotes[i].sesId === editedResData){
+              console.log(i)
+              return i;
+            }
+          }
+        }
+        sessionNotes.splice(findEdit(sessionNotes, editedResData), 1, res.data)
+
+        setNotes([...sessionNotes])
+
+        handleClose()
+      })
+  };
 
   return (
     <>
@@ -21,43 +79,51 @@ export default function ModalEditSesNote() {
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Group className="mb-3" >
               <Form.Label>Session Number</Form.Label>
               <Form.Control 
                 as="input" 
-                placeholder="#"
+                name="sesNumber" 
+                onChange={handleChange} 
+                value={formState.sesNumber}
                 autoFocus 
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Session Date</Form.Label>
+            <Form.Group className="mb-3" >
+              <Form.Label htmlFor='sesDate'>Session Date</Form.Label>
               <Form.Control
-                as="input" 
-                placeholder="Example - 2024-12-25"
-                
+                as="input"  
+                name="sesDate" 
+                onChange={handleChange} 
+                value={formState.sesDate}
               />
             </Form.Group>
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
+            <Form.Group className="mb-3" >
               <Form.Label>Average Party Level</Form.Label>
-              <Form.Control as="input" />
+              <Form.Control 
+                as="input" 
+                name="sesPartyLvl" 
+                onChange={handleChange} 
+                value={formState.sesPartyLvl} 
+                />
             </Form.Group>
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
+            <Form.Group className="mb-3" >
               <Form.Label>Session Notes</Form.Label>
-              <Form.Control as="textarea" rows={10} />
+              <Form.Control 
+                as="textarea" 
+                rows={10} 
+                name="sesNotes" 
+                onChange={handleChange} 
+                value={formState.sesNotes}/>
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
+        {errors && <div className="error">{`Please include: ${errors}`}</div>}
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" type='submit' onClick={handleSubmit}>
             Save Changes
           </Button>
         </Modal.Footer>
@@ -65,4 +131,3 @@ export default function ModalEditSesNote() {
     </>
   );
 }
-

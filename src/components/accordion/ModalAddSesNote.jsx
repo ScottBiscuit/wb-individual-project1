@@ -4,14 +4,14 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
-export default function ModalAddSesNote({ onSubmit, defaultValue, setNotes, sessionNotes }) {
+export default function ModalAddSesNote({ setNotes, sessionNotes }) {
   const [show, setShow] = useState(false);
   
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const [formState, setFormState] = useState(
-    defaultValue || {
+    {
       sesNumber: "",
       sesDate: "",
       sesPartyLvl: "",
@@ -63,7 +63,7 @@ export default function ModalAddSesNote({ onSubmit, defaultValue, setNotes, sess
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Group className="mb-3" >
               <Form.Label>Session Number</Form.Label>
               <Form.Control 
                 as="input" 
@@ -74,7 +74,7 @@ export default function ModalAddSesNote({ onSubmit, defaultValue, setNotes, sess
                 autoFocus 
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3" >
               <Form.Label htmlFor='sesDate'>Session Date</Form.Label>
               <Form.Control
                 as="input"  
@@ -84,7 +84,7 @@ export default function ModalAddSesNote({ onSubmit, defaultValue, setNotes, sess
                 value={formState.sesDate}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Group className="mb-3" >
               <Form.Label>Average Party Level</Form.Label>
               <Form.Control 
                 as="input" 
@@ -94,7 +94,7 @@ export default function ModalAddSesNote({ onSubmit, defaultValue, setNotes, sess
                 value={formState.sesPartyLvl} 
                 />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Group className="mb-3" >
               <Form.Label>Session Notes</Form.Label>
               <Form.Control 
                 as="textarea" 

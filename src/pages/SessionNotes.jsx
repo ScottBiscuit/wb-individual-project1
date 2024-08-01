@@ -13,7 +13,7 @@ export default function SessionNotes() {
   const [sessionNotes, setNotes] = useState(useLoaderData().sessionNotes);
 
   const sessionNotesList = sessionNotes.map((sesNote) => (
-    <AccordionSesItem key={sesNote.sesId} sesNote = {sesNote}/>
+    <AccordionSesItem key={sesNote.sesId} sesNote = {sesNote} setNotes={setNotes} sessionNotes={sessionNotes}/>
   ));
 
   return (
