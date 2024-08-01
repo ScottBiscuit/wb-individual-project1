@@ -2,6 +2,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
+
 
 export default function ModalDelSesNote({ setNotes, sessionNotes, sesNote}) {
   const [show, setShow] = useState(false);
@@ -9,17 +11,40 @@ export default function ModalDelSesNote({ setNotes, sessionNotes, sesNote}) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [formState, setFormState] = useState(
+    {
+      sesNumber: sesNote.sesNumber,
+      sesDate: sesNote.sesDate,
+      sesPartyLvl: sesNote.sesPartyLvl,
+      sesNotes: sesNote.sesNotes
+    });
+
+    const handleChange = (e) => {
+        setFormState({ ...formState, [e.target.name]: e.target.value });
+      };
+
   const handleSubmit = () => {
+
     axios.delete(`/api/sessionNotes/${sesNote.sesId}/delete`, 
-        { sesId: formState.sesId }).then((res) => {
-           
+      { sesId: formState.sesId }).then((res) => {
 
-            
-          setNotes([res.data, ...sessionNotes])
+        const deletedResData = sesNote.sesId
 
-          handleClose()
-        })
-  }
+        function findDeleted(sessionNotes, deletedResData){
+          for(let i = 0; i < sessionNotes.length; i++){
+            if(sessionNotes[i].sesId === deletedResData){
+              console.log(i)
+              return i;
+            }
+          }
+        }
+        sessionNotes.splice(findDeleted(sessionNotes, deletedResData), 1)
+
+        setNotes([...sessionNotes])
+
+        handleClose()
+      })
+  };
 
   return (
     <>
