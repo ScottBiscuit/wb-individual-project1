@@ -106,9 +106,7 @@ export default function PartyTabs() {
             <Tab eventKey="extras" title="Extras">{playerExtrasRows}</Tab>
         </Tabs>
         <Row>
-            <ModalAddPartyRow 
-            // onClick={addNewPlayer}
-            />
+            <ModalAddPartyRow party={party} setParty={setParty} />
         </Row>
     </Container>
   );

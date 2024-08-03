@@ -12,6 +12,7 @@ export default function ModalEditPartyRow({ party, setParty, PC }) {
 
   const [formState, setFormState] = useState(
     {
+        pcImg: PC.pcImg,
         pcName: PC.pcName,
         pcRace: PC.pcRace,
         pcClass: PC.pcClass,
@@ -109,6 +110,7 @@ export default function ModalEditPartyRow({ party, setParty, PC }) {
                 value={formState.pcClass} 
                 />
             </Form.Group>
+            
             <Form.Group className="mb-3" >
               <Form.Label>Level:</Form.Label>
               <Form.Control 
@@ -116,6 +118,17 @@ export default function ModalEditPartyRow({ party, setParty, PC }) {
                 name="pcLevel" 
                 onChange={handleChange} 
                 value={formState.pcLevel} 
+                />
+            </Form.Group>
+
+            <Form.Group className="mb-3" >
+              <Form.Label>Image:</Form.Label>
+              <Form.Control 
+                as="input" 
+                placeholder="(Optional) Add link to photo" 
+                name="pcImage" 
+                onChange={handleChange} 
+                value={formState.pcImg} 
                 />
             </Form.Group>
 

@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
-export default function ModalAddPartyRow({ party, setParty, PC }) {
+export default function ModalAddPartyRow({ party, setParty }) {
   const [show, setShow] = useState(false);
   
   const handleClose = () => setShow(false);
@@ -16,6 +16,7 @@ export default function ModalAddPartyRow({ party, setParty, PC }) {
         pcRace: "",
         pcClass: "",
         pcLevel: "",
+        pcImg: "",
         pcBackstory: "",
         pcGoals: "",
         pcExtras: ""
@@ -51,7 +52,7 @@ export default function ModalAddPartyRow({ party, setParty, PC }) {
       { pcId: formState.pcId, pcImg: formState.pcImg, pcName: formState.pcName, pcRace: formState.pcRace, pcClass: formState.pcClass, pcLevel: formState.pcLevel, pcBackstory: formState.pcBackstory, pcGoals: formState.pcGoals, pcExtras: formState.pcExtras }).then((res) => {
 
         
-        setParty([...party])
+        setParty([res.data, ...party])
 
         handleClose()
       })
@@ -110,6 +111,17 @@ export default function ModalAddPartyRow({ party, setParty, PC }) {
                 name="pcLevel" 
                 onChange={handleChange} 
                 value={formState.pcLevel} 
+                />
+            </Form.Group>
+
+            <Form.Group className="mb-3" >
+              <Form.Label>Image:</Form.Label>
+              <Form.Control 
+                as="input" 
+                placeholder="(Optional) Add link to photo" 
+                name="pcImage" 
+                onChange={handleChange} 
+                value={formState.pcImg} 
                 />
             </Form.Group>
 
