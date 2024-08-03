@@ -12,12 +12,13 @@ export default function ModalEditPartyRow({ party, setParty, PC }) {
 
   const [formState, setFormState] = useState(
     {
-        pcName: party.pcName,
-        pcRace: party.pcClass,
-        pcLevel: party.pcLevel,
-        pcBackstory: party.pcBackstory,
-        pcGoals: party.pcGoals,
-        pcExtras: party.pcExtras
+        pcName: PC.pcName,
+        pcRace: PC.pcRace,
+        pcClass: PC.pcClass,
+        pcLevel: PC.pcLevel,
+        pcBackstory: PC.pcBackstory,
+        pcGoals: PC.pcGoals,
+        pcExtras: PC.pcExtras
     });
 
   const handleChange = (e) => {
@@ -46,15 +47,14 @@ export default function ModalEditPartyRow({ party, setParty, PC }) {
 
     if (!validateForm()) return;
 
-    axios.put(`/api/party/${party.pcId}`, 
-      { pcId: formState.pcId, pcRace: formState.pcRace, pcClass: formState.pcClass, pcLevel: formState.pcLevel, pcBackstory: formState.pcBackstory, pcGoals: formState.pcGoals, pcExtras: formState.pcExtras, pcImg: formState.pcImg }).then((res) => {
+    axios.put(`/api/party/${PC.pcId}`, 
+      { pcId: formState.pcId, pcName: formState.pcName, pcRace: formState.pcRace, pcClass: formState.pcClass, pcLevel: formState.pcLevel, pcBackstory: formState.pcBackstory, pcGoals: formState.pcGoals, pcExtras: formState.pcExtras, pcImg: formState.pcImg }).then((res) => {
         
-        const editedResData = party.pcId
+        const editedResData = PC.pcId
 
-        function findEdit(party, editedResData){
-          for(let i = 0; i < party.length; i++){
-            if(party[i].pcId === editedResData){
-              console.log(i)
+        function findEdit(PC, editedResData){
+          for(let i = 0; i < PC.length; i++){
+            if(PC[i].pcId === editedResData){
               return i;
             }
           }
@@ -83,7 +83,6 @@ export default function ModalEditPartyRow({ party, setParty, PC }) {
               <Form.Label>Character Name:</Form.Label>
               <Form.Control 
                 as="input" 
-                placeholder="Enter Name"
                 name="pcName" 
                 onChange={handleChange} 
                 value={formState.pcName}
@@ -95,7 +94,6 @@ export default function ModalEditPartyRow({ party, setParty, PC }) {
               <Form.Label>Race/Species:</Form.Label>
               <Form.Control
                 as="input"  
-                placeholder="Enter Race"
                 name="pcRace" 
                 onChange={handleChange} 
                 value={formState.pcRace}
@@ -106,7 +104,6 @@ export default function ModalEditPartyRow({ party, setParty, PC }) {
               <Form.Label>Class/Subclass:</Form.Label>
               <Form.Control 
                 as="input" 
-                placeholder="Enter Class/Subclass" 
                 name="pcClass" 
                 onChange={handleChange} 
                 value={formState.pcClass} 
@@ -116,7 +113,6 @@ export default function ModalEditPartyRow({ party, setParty, PC }) {
               <Form.Label>Level:</Form.Label>
               <Form.Control 
                 as="input" 
-                placeholder="#" 
                 name="pcLevel" 
                 onChange={handleChange} 
                 value={formState.pcLevel} 

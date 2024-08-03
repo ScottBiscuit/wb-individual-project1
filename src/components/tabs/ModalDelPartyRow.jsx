@@ -35,7 +35,6 @@ export default function ModalDelPartyRow({ party, setParty, PC }) {
         function findDeleted(PC, deletedResData){
           for(let i = 0; i < PC.length; i++){
             if(PC[i].pcId === deletedResData){
-              console.log(i)
               return i;
             }
           }

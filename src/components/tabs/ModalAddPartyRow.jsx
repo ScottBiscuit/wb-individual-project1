@@ -49,7 +49,10 @@ export default function ModalAddPartyRow({ party, setParty, PC }) {
 
     axios.post('/api/party', 
       { pcId: formState.pcId, pcImg: formState.pcImg, pcName: formState.pcName, pcRace: formState.pcRace, pcClass: formState.pcClass, pcLevel: formState.pcLevel, pcBackstory: formState.pcBackstory, pcGoals: formState.pcGoals, pcExtras: formState.pcExtras }).then((res) => {
-        setParty([res.data, ...party])
+
+        
+        setParty([...party])
+
         handleClose()
       })
   };
@@ -93,7 +96,7 @@ export default function ModalAddPartyRow({ party, setParty, PC }) {
               <Form.Label>Class/Subclass:</Form.Label>
               <Form.Control 
                 as="input" 
-                placeholder="Enter Class/Subclass" 
+                placeholder="Enter Class - Subclass" 
                 name="pcClass" 
                 onChange={handleChange} 
                 value={formState.pcClass} 
