@@ -8,35 +8,15 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Link, useLoaderData } from 'react-router-dom';
 import { Button } from 'react-bootstrap'
+import ModalAddPartyRow from '../components/tabs/ModalAddPartyRow'
+import ModalDelPartyRow from '../components/tabs/ModalDelPartyRow'
+import ModalEditPartyRow from '../components/tabs/ModalEditPartyRow'
 
 export default function PartyTabs() {
-    const { party } = useLoaderData();
-
-    // const addNewPlayer = async (pcId) => {
-    //     const { data } = await axios.post('/api/party', { name: 'New Player Name' });
-    //     const newParty = { ...data, isEditing: true };
-    //     setPartyList([...partyList, newParty]);
-    //   };
-
-    // const deletePartyRow = async (pcId) => {
-    //     const { data } = await axios.delete(`/api/party/${pcId}/delete`);
-
-    //     if (!data.error) {
-    //         const newPartyList = [...partyList];
-
-    //         const index = newPartyList.findIndex((party) => party.pcId === data.pcId);
-    //         newPartyList.splice(index, 1);
-    //         setPartyList(newPartyList);
-    //     }
-    // };
-
+    // const { party } = useLoaderData();
+    const [party, setParty] = useState(useLoaderData().party);
     const playerBasicRows = party.map((PC) => (
-        // <PartyTabsRow 
-        // key={ pcId }
-        // initialPartyData={{ pcId, pcImg, pcName, pcRace, pcClass, pcLevel }}
-        // initialIsEditing={ isEditing }
-        // onDeleteRow={ () => deletePartyRow(pcId) }
-        // />
+       
         <Container key={PC.pcId} className='bg-success-subtle'>
             <Row >
                 <Col xs={{ span: 2 }}>
@@ -59,7 +39,10 @@ export default function PartyTabs() {
                     </Stack>
                 </Col>
                 <Col xs={{ span: 1 }}>
-                <Button as="input" type="button" value="Edit" />
+                    <Stack gap={1}>
+                        <ModalEditPartyRow setParty={setParty} party={party} PC={PC} />
+                        <ModalDelPartyRow setParty={setParty} party={party} PC={PC} />
+                    </Stack>
                 </Col>
             </Row>
         </Container>
@@ -123,9 +106,9 @@ export default function PartyTabs() {
             <Tab eventKey="extras" title="Extras">{playerExtrasRows}</Tab>
         </Tabs>
         <Row>
-            {/* <PartyTabsAddPCButton 
+            <ModalAddPartyRow 
             // onClick={addNewPlayer}
-            /> */}
+            />
         </Row>
     </Container>
   );

@@ -50,7 +50,7 @@ app.get('/api/party/:pcId', async (req, res) => {
     res.json(character);
   });
 
-app.post('/api/party', loginRequired, async(req, res) => {
+app.post('/api/party', async(req, res) => {
     const { pcId, pcImg, pcName, pcRace, pcClass, pcLevel, pcBackstory, pcAllies, pcGoals, pcExtras } = req.body;
     
     const newPC = await Character.create({
@@ -69,7 +69,7 @@ app.post('/api/party', loginRequired, async(req, res) => {
     res.json(newPC);
 });
 
-app.put('/api/party/:pcId', loginRequired, async (req, res) => {
+app.put('/api/party/:pcId', async (req, res) => {
     const { pcId } = req.params;
     const { pcImg, pcName, pcRace, pcClass, pcLevel, pcBackstory, pcAllies, pcGoals, pcExtras } = req.body;
  
@@ -93,7 +93,7 @@ app.put('/api/party/:pcId', loginRequired, async (req, res) => {
     }
 });
 
-app.delete('/api/party/:pcId/delete', loginRequired, async (req, res) => {
+app.delete('/api/party/:pcId/delete', async (req, res) => {
     const { pcId } = req.params;
     
     const deletePC = await Character.findOne({ where: { pcId: +pcId}});

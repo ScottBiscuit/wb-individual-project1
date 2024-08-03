@@ -22,7 +22,7 @@ export default function SessionNotes() {
         <Accordion.Item eventKey='0' className="mb-3 bg-warning-subtle">
             <Accordion.Header>Future Session Ideas</Accordion.Header>
             <Accordion.Body>
-              <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat recusandae facere sunt asperiores iure! Facere nostrum, pariatur officia accusamus accusantium doloremque totam quibusdam aliquam maiores repellendus hic sapiente officiis aut.
+              <div>Future session ideas will be here. Maybe they will have seperate lines that can be added/edited/deleted - like a task list. I need to add a new table in the database to house them.
               </div>
               <div>
                 <Button as="input" type="button" value="Edit" />

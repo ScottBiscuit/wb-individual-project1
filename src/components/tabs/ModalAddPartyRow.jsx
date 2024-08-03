@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
-export default function ModalEditSesNote({ setNotes, sessionNotes, sesNote }) {
+export default function ModalAddPartyRow({ party, setParty, PC }) {
   const [show, setShow] = useState(false);
   
   const handleClose = () => setShow(false);
@@ -12,10 +12,13 @@ export default function ModalEditSesNote({ setNotes, sessionNotes, sesNote }) {
 
   const [formState, setFormState] = useState(
     {
-      sesNumber: sesNote.sesNumber,
-      sesDate: sesNote.sesDate,
-      sesPartyLvl: sesNote.sesPartyLvl,
-      sesNotes: sesNote.sesNotes
+        pcName: "",
+        pcRace: "",
+        pcClass: "",
+        pcLevel: "",
+        pcBackstory: "",
+        pcGoals: "",
+        pcExtras: ""
     });
 
   const handleChange = (e) => {
@@ -25,7 +28,7 @@ export default function ModalEditSesNote({ setNotes, sessionNotes, sesNote }) {
   const [errors, setErrors] = useState("");
 
   const validateForm = () => {
-    if (formState.sesNumber && formState.sesDate && formState.sesPartyLvl && formState.sesNotes) {
+    if (formState.pcName && formState.pcRace && formState.pcClass && formState.pcLevel) {
       setErrors("");
       return true;
     } else {
@@ -44,23 +47,9 @@ export default function ModalEditSesNote({ setNotes, sessionNotes, sesNote }) {
 
     if (!validateForm()) return;
 
-    axios.put(`/api/sessionNotes/${sesNote.sesId}`, 
-      { sesId: formState.sesId, sesNumber: formState.sesNumber, sesDate: formState.sesDate, sesPartyLvl: formState.sesPartyLvl, sesNotes: formState.sesNotes }).then((res) => {
-        
-        const editedResData = sesNote.sesId
-
-        function findEdit(sessionNotes, editedResData){
-          for(let i = 0; i < sessionNotes.length; i++){
-            if(sessionNotes[i].sesId === editedResData){
-              console.log(i)
-              return i;
-            }
-          }
-        }
-        sessionNotes.splice(findEdit(sessionNotes, editedResData), 1, res.data)
-
-        setNotes([...sessionNotes])
-
+    axios.post('/api/party', 
+      { pcId: formState.pcId, pcImg: formState.pcImg, pcName: formState.pcName, pcRace: formState.pcRace, pcClass: formState.pcClass, pcLevel: formState.pcLevel, pcBackstory: formState.pcBackstory, pcGoals: formState.pcGoals, pcExtras: formState.pcExtras }).then((res) => {
+        setParty([res.data, ...party])
         handleClose()
       })
   };
@@ -68,52 +57,59 @@ export default function ModalEditSesNote({ setNotes, sessionNotes, sesNote }) {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Edit
+        Add New Party Member
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit Session Notes</Modal.Title>
+          <Modal.Title>Add New Party Member</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" >
-              <Form.Label>Session Number</Form.Label>
+              <Form.Label>Character Name:</Form.Label>
               <Form.Control 
                 as="input" 
-                name="sesNumber" 
+                placeholder="Enter Name"
+                name="pcName" 
                 onChange={handleChange} 
-                value={formState.sesNumber}
+                value={formState.pcName}
                 autoFocus 
               />
             </Form.Group>
+
             <Form.Group className="mb-3" >
-              <Form.Label htmlFor='sesDate'>Session Date</Form.Label>
+              <Form.Label>Race/Species:</Form.Label>
               <Form.Control
                 as="input"  
-                name="sesDate" 
+                placeholder="Enter Race"
+                name="pcRace" 
                 onChange={handleChange} 
-                value={formState.sesDate}
+                value={formState.pcRace}
               />
             </Form.Group>
+
             <Form.Group className="mb-3" >
-              <Form.Label>Average Party Level</Form.Label>
+              <Form.Label>Class/Subclass:</Form.Label>
               <Form.Control 
                 as="input" 
-                name="sesPartyLvl" 
+                placeholder="Enter Class/Subclass" 
+                name="pcClass" 
                 onChange={handleChange} 
-                value={formState.sesPartyLvl} 
+                value={formState.pcClass} 
                 />
             </Form.Group>
             <Form.Group className="mb-3" >
-              <Form.Label>Session Notes</Form.Label>
+              <Form.Label>Level:</Form.Label>
               <Form.Control 
-                as="textarea" 
-                rows={10} 
-                name="sesNotes" 
+                as="input" 
+                placeholder="#" 
+                name="pcLevel" 
                 onChange={handleChange} 
-                value={formState.sesNotes}/>
+                value={formState.pcLevel} 
+                />
             </Form.Group>
+
           </Form>
         </Modal.Body>
         <Modal.Footer>
