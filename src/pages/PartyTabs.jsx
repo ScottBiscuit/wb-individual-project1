@@ -11,6 +11,9 @@ import { Button } from 'react-bootstrap'
 import ModalAddPartyRow from '../components/tabs/ModalAddPartyRow'
 import ModalDelPartyRow from '../components/tabs/ModalDelPartyRow'
 import ModalEditPartyRow from '../components/tabs/ModalEditPartyRow'
+import ModalEditPartyBS from '../components/tabs/ModalEditPartyBS'
+import ModalEditPartyEx from '../components/tabs/ModalEditPartyEx'
+import ModalEditPartyGM from '../components/tabs/ModalEditPartyGM'
 
 export default function PartyTabs() {
     // const { party } = useLoaderData();
@@ -58,7 +61,10 @@ export default function PartyTabs() {
                     {PC.pcBackstory}
                 </Col>
                 <Col xs={{ span: 1 }}>
-                    <Button as="input" type="button" value="Edit" />
+                    <Stack gap={1}>
+                        <ModalEditPartyBS setParty={setParty} party={party} PC={PC} />
+                        <ModalDelPartyRow setParty={setParty} party={party} PC={PC} />
+                    </Stack>
                 </Col>
             </Row>
         </Container>
@@ -74,7 +80,10 @@ export default function PartyTabs() {
                     {PC.pcGoals}
                 </Col>
                 <Col xs={{ span: 1 }}>
-                    <Button as="input" type="button" value="Edit" />
+                    <Stack gap={1}>
+                        <ModalEditPartyGM setParty={setParty} party={party} PC={PC} />
+                        <ModalDelPartyRow setParty={setParty} party={party} PC={PC} />
+                    </Stack>
                 </Col>
             </Row>
         </Container>
@@ -90,7 +99,10 @@ export default function PartyTabs() {
                     {PC.pcExtras}
                 </Col>
                 <Col xs={{ span: 1 }}>
-                    <Button as="input" type="button" value="Edit" />
+                    <Stack gap={1}>
+                        <ModalEditPartyEx setParty={setParty} party={party} PC={PC} />
+                        <ModalDelPartyRow setParty={setParty} party={party} PC={PC} />
+                    </Stack>
                 </Col>
             </Row>
         </Container>

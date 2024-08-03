@@ -50,7 +50,7 @@ export default function ModalAddPartyRow({ party, setParty }) {
 
     axios.post('/api/party', 
       { pcId: formState.pcId, pcImg: formState.pcImg, pcName: formState.pcName, pcRace: formState.pcRace, pcClass: formState.pcClass, pcLevel: formState.pcLevel, pcBackstory: formState.pcBackstory, pcGoals: formState.pcGoals, pcExtras: formState.pcExtras }).then((res) => {
-
+        
         
         setParty([res.data, ...party])
 

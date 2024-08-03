@@ -12,7 +12,7 @@ export default function AccordionSesItem({ sesNote, setNotes, sessionNotes }) {
     <Accordion.Item eventKey={sesId} key={sesId}>
     <Accordion.Header>Session #{sesNumber}  |  {sesDate}  |  Lvl: {sesPartyLvl} </Accordion.Header>
       <Accordion.Body>
-        <Row type='text'>
+        <Row class='whitespace' type='text'>
           {sesNotes}
         </Row>
           <span>
