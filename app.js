@@ -39,7 +39,7 @@ app.post('/api/logout', loginRequired, (req, res) => {
     }
 );
 
-app.get('/api/party', async (req, res) => {
+app.get('/api/party', loginRequired, async (req, res) => {
     const allParty = await Character.findAll({order: [['pcName']]})
     res.json(allParty);
 });

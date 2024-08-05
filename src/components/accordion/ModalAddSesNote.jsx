@@ -53,7 +53,7 @@ export default function ModalAddSesNote({ setNotes, sessionNotes }) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="success" onClick={handleShow}>
         Add New Session
       </Button>
 

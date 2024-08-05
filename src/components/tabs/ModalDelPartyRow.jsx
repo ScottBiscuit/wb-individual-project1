@@ -49,7 +49,7 @@ export default function ModalDelPartyRow({ party, setParty, PC }) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="success" onClick={handleShow}>
         Delete
       </Button>
 

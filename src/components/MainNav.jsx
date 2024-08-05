@@ -27,6 +27,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import LogoutButton from './LogoutButton';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import LogInOutButton from './login/LogInOutButton';
 
 export default function MainNav({ brand }) {
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ export default function MainNav({ brand }) {
                 Dice Roller
               </NavDropdown.Item>
             </NavDropdown>
-            <LogoutButton onLogout={handleLogout} />
+            <LogInOutButton onLogout={handleLogout} />
           </Nav>
         </Navbar.Collapse>
       </Container>

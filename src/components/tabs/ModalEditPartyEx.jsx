@@ -70,7 +70,7 @@ export default function ModalEditPartyEx({ party, setParty, PC }) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="success" onClick={handleShow}>
         Edit
       </Button>
 

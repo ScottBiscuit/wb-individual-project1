@@ -60,7 +60,7 @@ export default function ModalAddPartyRow({ party, setParty }) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="success" onClick={handleShow}>
         Add New Party Member
       </Button>
 
@@ -132,7 +132,7 @@ export default function ModalAddPartyRow({ party, setParty }) {
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="primary" type='submit' onClick={handleSubmit}>
+          <Button variant="success" type='submit' onClick={handleSubmit}>
             Save Changes
           </Button>
         </Modal.Footer>
