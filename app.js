@@ -162,8 +162,8 @@ app.delete('/api/sessionNotes/:sesId/delete', async (req, res) => {
     }
 });
 
-app.get('/api/sessionNotes', async (req, res) => {
-    const allNotes = await DMNote.findAll({order: [['sesNumber', 'DESC']]})
+app.get('/api/dmNotes', async (req, res) => {
+    const allNotes = await DMNote.findAll({order: [['dmNoteId', 'DESC']]})
     res.json(allNotes);
 });
 

@@ -3,6 +3,7 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import { BsFillPencilFill } from 'react-icons/bs';
 
 export default function ModalEditPartyRow({ party, setParty, PC }) {
   const [show, setShow] = useState(false);
@@ -71,7 +72,7 @@ export default function ModalEditPartyRow({ party, setParty, PC }) {
   return (
     <>
       <Button variant="success" onClick={handleShow}>
-        Edit
+        <BsFillPencilFill />
       </Button>
 
       <Modal show={show} onHide={handleClose}>

@@ -3,6 +3,7 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import { BsFillTrashFill } from 'react-icons/bs';
 
 
 export default function ModalDelSesNote({ setNotes, sessionNotes, sesNote}) {
@@ -49,7 +50,7 @@ export default function ModalDelSesNote({ setNotes, sessionNotes, sesNote}) {
   return (
     <>
       <Button variant="success" onClick={handleShow}>
-        Delete
+        <BsFillTrashFill />
       </Button>
 
       <Modal show={show} onHide={handleClose}>

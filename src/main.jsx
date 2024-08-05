@@ -22,7 +22,8 @@ const router = createBrowserRouter(
       } }/>
       <Route path='sessionNotes' element={<SessionNotes />} loader={async () => {
         const res = await axios.get('/api/sessionNotes')
-        return {sessionNotes: res.data}
+        const res2 = await axios.get('/api/dmNotes')
+        return {sessionNotes: res.data, dmNotes: res2.data}
       }}
       />
     </Route>
