@@ -2,7 +2,7 @@ import express from 'express';
 import session from 'express-session';
 import morgan from 'morgan';
 import ViteExpress from 'vite-express';
-import { User, Character, SessionNote, Campaign} from './src/model.js'
+import { User, Character, SessionNote, DMNote, Campaign} from './src/model.js'
 
 const app = express();
 const port = '8000';
@@ -160,6 +160,11 @@ app.delete('/api/sessionNotes/:sesId/delete', async (req, res) => {
         await deleteSes.destroy()
         res.json(deleteSes);
     }
+});
+
+app.get('/api/sessionNotes', async (req, res) => {
+    const allNotes = await DMNote.findAll({order: [['sesNumber', 'DESC']]})
+    res.json(allNotes);
 });
 
 ViteExpress.listen(app, port, () => console.log(`Server is listening on http://localhost:${port}`));

@@ -23,6 +23,13 @@ export class SessionNote extends Model {
     return this.toJSON()
   }
 }
+
+export class DMNote extends Model {
+  [util.inspect.custom]() {
+    return this.toJSON();
+  }
+}
+
 export class Campaign extends Model {
   [util.inspect.custom]() {
     return this.toJSON();
@@ -128,6 +135,27 @@ SessionNote.init(
     updatedAt: true
   }
 )
+
+DMNote.init(
+  {
+    dmNoteId: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    dmNoteIdeas: {
+        type: DataTypes.TEXT,
+        allowNull: false
+    },
+    },
+  {
+    modelName: 'dmnote',
+    sequelize: db,
+    timestamps: true,
+    updatedAt: true
+  }
+)
+
 Campaign.init(
   {
     campaignId: {
@@ -150,3 +178,6 @@ Character.belongsTo(Campaign, { foreignKey: 'campaignId'})
 
 Campaign.hasMany(User, { foreignKey: 'campaignId' })
 User.belongsTo(Campaign, { foreignKey: 'campaignId' })
+
+Campaign.hasMany(DMNote, { foreignKey: 'campaignId' })
+DMNote.belongsTo(Campaign, { foreignKey: 'campaignId' })

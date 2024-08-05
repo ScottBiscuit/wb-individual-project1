@@ -3,7 +3,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Accordion from 'react-bootstrap/Accordion';
 import { useLoaderData } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button, ListGroup, Table } from 'react-bootstrap';
 import AccordionSesItem from '../components/accordion/AccordionSesItem';
 import ModalAddSesNote from '../components/accordion/ModalAddSesNote';
 import { useState } from 'react';
@@ -20,13 +20,21 @@ export default function SessionNotes() {
     <Container >
       <Accordion defaultActiveKey={['0']} alwaysOpen>
         <Accordion.Item eventKey='0' className="mb-3 bg-warning-subtle">
-            <Accordion.Header>Future Session Ideas</Accordion.Header>
+            <Accordion.Header  className='mb-3'>Future Session Ideas</Accordion.Header>
             <Accordion.Body>
-              <div>Future session ideas will be here. Maybe they will have seperate lines that can be added/edited/deleted - like a task list. I need to add a new table in the database to house them.
-              </div>
+              <Button as="input" type="button" value="Add Ideas" className='bg-success'/>
+            <ListGroup className='mb-3'>
+              <ListGroup.Item>Cras justo odio</ListGroup.Item>
+              <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
+              <ListGroup.Item>Morbi leo risus</ListGroup.Item>
+              <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
+              <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+            </ListGroup>
+              <Table>
+              
               <div>
-                <Button as="input" type="button" value="Edit" />
               </div>
+              </Table>
             </Accordion.Body>
         </Accordion.Item>
         <ModalAddSesNote setNotes={setNotes} sessionNotes={sessionNotes}/>

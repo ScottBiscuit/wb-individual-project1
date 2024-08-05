@@ -30,7 +30,7 @@ export default function ModalAddSesNote({ setNotes, sessionNotes }) {
       return true;
     } else {
       let errorFields = [];
-      for (const [key, value] of Object.entries(formState)) {
+      for (const [key, value] of Object.entries(formState)) { 
         if (!value) {
           errorFields.push(key);
         }

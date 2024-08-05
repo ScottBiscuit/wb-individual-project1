@@ -58,7 +58,10 @@ export default function PartyTabs() {
                     <img src={PC.pcImg} width='100px'/>
                 </Col>
                 <Col xs={{ span: 9 }}>
-                    {PC.pcBackstory}
+                    <Stack gap={1}>
+                    <h5>{PC.pcName}</h5>
+                    <div>{PC.pcBackstory}</div>
+                    </Stack>
                 </Col>
                 <Col xs={{ span: 1 }}>
                     <Stack gap={1}>
@@ -77,7 +80,10 @@ export default function PartyTabs() {
                     <img src={PC.pcImg} width='100px'/>
                 </Col>
                 <Col xs={{ span: 9 }}>
-                    {PC.pcGoals}
+                    <Stack gap={1}>
+                        <h5>{PC.pcName}</h5>
+                        <div>{PC.pcGoals}</div>
+                    </Stack>
                 </Col>
                 <Col xs={{ span: 1 }}>
                     <Stack gap={1}>
@@ -96,7 +102,10 @@ export default function PartyTabs() {
                     <img src={PC.pcImg} width='100px'/>
                 </Col>
                 <Col xs={{ span: 9 }}>
-                    {PC.pcExtras}
+                    <Stack gap={1}>
+                        <h5>{PC.pcName}</h5>
+                        <div>{PC.pcExtras}</div>
+                    </Stack>
                 </Col>
                 <Col xs={{ span: 1 }}>
                     <Stack gap={1}>
