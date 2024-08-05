@@ -62,7 +62,7 @@ export default function ModalDelPartyRow({ party, setParty, PC }) {
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="primary" type='submit' onClick={handleSubmit}>
+          <Button variant="success" type='submit' onClick={handleSubmit}>
             Delete Character
           </Button>
         </Modal.Footer>

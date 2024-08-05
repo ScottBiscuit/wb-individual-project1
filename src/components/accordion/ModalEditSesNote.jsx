@@ -67,7 +67,7 @@ export default function ModalEditSesNote({ setNotes, sessionNotes, sesNote }) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="success" onClick={handleShow}>
         Edit
       </Button>
 
@@ -121,7 +121,7 @@ export default function ModalEditSesNote({ setNotes, sessionNotes, sesNote }) {
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="primary" type='submit' onClick={handleSubmit}>
+          <Button variant="success" type='submit' onClick={handleSubmit}>
             Save Changes
           </Button>
         </Modal.Footer>

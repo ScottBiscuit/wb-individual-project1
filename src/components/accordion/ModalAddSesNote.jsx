@@ -111,7 +111,7 @@ export default function ModalAddSesNote({ setNotes, sessionNotes }) {
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="primary" type='submit' onClick={handleSubmit}>
+          <Button variant="success" type='submit' onClick={handleSubmit}>
             Save Changes
           </Button>
         </Modal.Footer>
