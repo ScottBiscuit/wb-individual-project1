@@ -21,7 +21,7 @@ export default function PartyTabs() {
     const playerBasicRows = party.map((PC) => (
        
         <Container key={PC.pcId} className='bg-success-subtle'>
-            <Row className="mb-3">
+            <Row className="mb-3 p-2">
                 <Col xs={{ span: 2 }}>
                     <img src={PC.pcImg} width='100px'/>
                 </Col>
@@ -53,7 +53,7 @@ export default function PartyTabs() {
 
     const playerBSRows = party.map((PC) => (
         <Container key={PC.pcId} className='bg-success-subtle'>
-            <Row className="mb-3">
+            <Row className="mb-3 p-2">
                 <Col xs={{ span: 2 }}>
                     <img src={PC.pcImg} width='100px'/>
                 </Col>
@@ -75,7 +75,7 @@ export default function PartyTabs() {
 
     const playerGoalsRows = party.map((PC) => (
         <Container key={PC.pcId} className='bg-success-subtle'>
-            <Row className="mb-3">
+            <Row className="mb-3 p-2">
                 <Col xs={{ span: 2 }}>
                     <img src={PC.pcImg} width='100px'/>
                 </Col>
@@ -97,7 +97,7 @@ export default function PartyTabs() {
 
     const playerExtrasRows = party.map((PC) => (
         <Container key={PC.pcId} className='bg-success-subtle'>
-            <Row className="mb-3">
+            <Row className="mb-3 p-2">
                 <Col xs={{ span: 2 }}>
                     <img src={PC.pcImg} width='100px'/>
                 </Col>

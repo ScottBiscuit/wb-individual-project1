@@ -1,54 +1,47 @@
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import SignupForm from '../components/login/SignupForm';
 import LoginForm from '../components/login/LoginForm';
 
 export default function Home() {
+
+  const navigate = useNavigate();
+
+  const handleLogin = async (event, formData) => {
+    event.preventDefault();
+
+    const res = await axios.post('/api/auth', formData);
+
+    if (res.data.success) {
+      navigate('/party');
+    }
+  };
+
   return (
     <>
-    
-    
     <CardGroup>
       <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
         <Card.Body>
-          <Card.Title>Log In</Card.Title>
-          <Card.Text>
-          <LoginForm />
+          <Card.Title className='bg-success-subtle p-2'>Log In</Card.Title>
+          <Card.Text className='p-2'>
+          <LoginForm onLogin={handleLogin}/>
           </Card.Text>
         </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
       </Card>
       <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
         <Card.Body>
-          <Card.Title>Sign Up</Card.Title>
-          <Card.Text>
+          <Card.Title className='bg-success-subtle p-2'>Sign Up</Card.Title>
+          <Card.Text className='p-2'>
           <SignupForm />
           </Card.Text>
         </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
       </Card>
       <Card>
         <Card.Img variant="top" src="../images/d20.png" />
-        {/* <Card.Body>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
-          </Card.Text>
-        </Card.Body> */}
-        {/* <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer> */}
       </Card>
     </CardGroup>
     </>
-    
   );
 }

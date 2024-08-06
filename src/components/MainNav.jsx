@@ -46,7 +46,7 @@ export default function MainNav({ brand }) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href='login'>Login</Nav.Link>
+            <Nav.Link href='Oops'>Oops...</Nav.Link>
             <Nav.Link href="party">Party Info</Nav.Link>
             <Nav.Link href="sessionNotes">Session Notes</Nav.Link>
             <NavDropdown title="Extras" id="basic-nav-dropdown">
@@ -59,6 +59,10 @@ export default function MainNav({ brand }) {
               <NavDropdown.Item href="#action/lootTable" disabled>Loot Tables</NavDropdown.Item>
               <NavDropdown.Item href="#action/diceRoller" disabled>
                 Dice Roller
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/adminStuff" disabled>
+                Admin Stuff
               </NavDropdown.Item>
             </NavDropdown>
             <LogInOutButton onLogout={handleLogout} />

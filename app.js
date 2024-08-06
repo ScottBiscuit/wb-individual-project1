@@ -150,6 +150,7 @@ app.put('/api/sessionNotes/:sesId', loginRequired, async (req, res) => {
         res.json(editSes);
     }
 });
+
 app.delete('/api/sessionNotes/:sesId/delete', loginRequired, async (req, res) => {
     const { sesId } = req.params;
     
@@ -165,6 +166,45 @@ app.delete('/api/sessionNotes/:sesId/delete', loginRequired, async (req, res) =>
 app.get('/api/dmNotes', loginRequired, async (req, res) => {
     const allNotes = await DMNote.findAll({order: [['dmNoteId', 'DESC']]})
     res.json(allNotes);
+});
+
+app.post('/api/dmNotes', loginRequired, async (req, res) => {
+    const { dmNoteId, dmNoteIdeas } = req.body;
+    
+    const newDMNote = await DMNote.create({
+        // if no value is provided in req.body, use default values
+        dmNoteId: dmNoteId,
+        dmNoteIdeas: dmNoteIdeas || '',
+    });
+    res.json(newDMNote);
+});
+
+app.put('/api/dmNotes/:sesId', loginRequired, async (req, res) => {
+    const { dmNoteId } = req.params;
+    const { dmNoteIdeas } = req.body;
+ 
+    const editDMNote = await DMNote.findOne({ where: { dmNoteId: +dmNoteId}});
+    if (editDMNote.dmNoteId !== +dmNoteId) {
+        res.status(404).json({ error: `Session Notes with ID ${dmNoteId} not found!`});
+    } else {
+            // Only update the values that are provided in req.body
+            editDMNote.dmNoteIdeas = dmNoteIdeas || editDMNote.dmNoteIdeas,
+
+            await editDMNote.save()
+        res.json(editDMNote);
+    }
+});
+
+app.delete('/api/dmNotes/:dmNoteId/delete', loginRequired, async (req, res) => {
+    const { dmNoteId } = req.params;
+    
+    const deleteDMNote = await DMNote.findOne({ where: { dmNoteId: +dmNoteId}});
+    if (deleteDMNote.dmNoteId !== +dmNoteId) {
+        res.status(404).json({ error: `DM Notes with ID ${dmNoteId} not found!`});
+    } else {
+        await deleteDMNote.destroy()
+        res.json(deleteDMNote);
+    }
 });
 
 ViteExpress.listen(app, port, () => console.log(`Server is listening on http://localhost:${port}`));
