@@ -1,6 +1,7 @@
 import { Link, useRouteError } from 'react-router-dom';
+import { Image, Card } from 'react-bootstrap';
 
-function ErrorPage() {
+export default  function ErrorPage() {
   const error = useRouteError();
   console.error(error);
 
@@ -8,9 +9,19 @@ function ErrorPage() {
     if (error.response.status === 401) {
       return (
         <>
-          <h1>Oops!</h1>
-          <p>You must be logged in to do that.</p>
-          <Link to="/">Click here to go back to the homepage</Link>
+          <Card className='text-center'>
+            <Card.Img variant='top' src="./images/unauthorized.jpg" alt="Gandalf says You Shall Not Pass!" />
+            <Card.Body className='bg-success-subtle'>
+              <Card.Title className='bg-success-subtle'>OOPS! You will need to log in to do that...</Card.Title>
+              {/* <Card.Text>
+                This is a wider card with supporting text below as a natural lead-in
+                to additional content. This content is a little bit longer.
+              </Card.Text> */}
+                <Link to="/" className=''>Click here to go back to the homepage</Link>
+              {/* <Card.Text>Last updated 3 mins ago</Card.Text> */}
+            </Card.Body>
+          </Card>
+          
         </>
       );
     }
@@ -27,4 +38,3 @@ function ErrorPage() {
   );
 }
 
-export default ErrorPage;

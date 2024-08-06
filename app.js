@@ -44,13 +44,13 @@ app.get('/api/party', loginRequired, async (req, res) => {
     res.json(allParty);
 });
 
-app.get('/api/party/:pcId', async (req, res) => {
+app.get('/api/party/:pcId', loginRequired, async (req, res) => {
     const { pcId } = req.params;
     const character = await Character.findByPk(pcId);
     res.json(character);
   });
 
-app.post('/api/party', async(req, res) => {
+app.post('/api/party', loginRequired, async(req, res) => {
     const { pcId, pcImg, pcName, pcRace, pcClass, pcLevel, pcBackstory, pcAllies, pcGoals, pcExtras } = req.body;
     
     const newPC = await Character.create({
@@ -69,7 +69,7 @@ app.post('/api/party', async(req, res) => {
     res.json(newPC);
 });
 
-app.put('/api/party/:pcId', async (req, res) => {
+app.put('/api/party/:pcId', loginRequired, async (req, res) => {
     const { pcId } = req.params;
     const { pcImg, pcName, pcRace, pcClass, pcLevel, pcBackstory, pcAllies, pcGoals, pcExtras } = req.body;
  
@@ -93,7 +93,7 @@ app.put('/api/party/:pcId', async (req, res) => {
     }
 });
 
-app.delete('/api/party/:pcId/delete', async (req, res) => {
+app.delete('/api/party/:pcId/delete', loginRequired, async (req, res) => {
     const { pcId } = req.params;
     
     const deletePC = await Character.findOne({ where: { pcId: +pcId}});
@@ -105,18 +105,18 @@ app.delete('/api/party/:pcId/delete', async (req, res) => {
     }
 });
 
-app.get('/api/sessionNotes', async (req, res) => {
+app.get('/api/sessionNotes', loginRequired, async (req, res) => {
     const allNotes = await SessionNote.findAll({order: [['sesNumber', 'DESC']]})
     res.json(allNotes);
 });
 
-app.get('/api/sessionNotes/:sesId', async (req, res) => {
+app.get('/api/sessionNotes/:sesId', loginRequired, async (req, res) => {
     const { sesId } = req.params;
     const findSession = await SessionNote.findByPk(sesId);
     res.json(findSession);
   });
 
-  app.post('/api/sessionNotes', async (req, res) => {
+  app.post('/api/sessionNotes', loginRequired, async (req, res) => {
     const { sesId, sesNumber, sesDate, sesPartyLvl, sesNotes } = req.body;
     
     const newSes = await SessionNote.create({
@@ -131,7 +131,7 @@ app.get('/api/sessionNotes/:sesId', async (req, res) => {
     res.json(newSes);
 });
 
-app.put('/api/sessionNotes/:sesId', async (req, res) => {
+app.put('/api/sessionNotes/:sesId', loginRequired, async (req, res) => {
     const { sesId } = req.params;
     const { sesNumber, sesDate, sesPartyLvl, sesNotes } = req.body;
  
@@ -150,7 +150,7 @@ app.put('/api/sessionNotes/:sesId', async (req, res) => {
         res.json(editSes);
     }
 });
-app.delete('/api/sessionNotes/:sesId/delete', async (req, res) => {
+app.delete('/api/sessionNotes/:sesId/delete', loginRequired, async (req, res) => {
     const { sesId } = req.params;
     
     const deleteSes = await SessionNote.findOne({ where: { sesId: +sesId}});
@@ -162,7 +162,7 @@ app.delete('/api/sessionNotes/:sesId/delete', async (req, res) => {
     }
 });
 
-app.get('/api/dmNotes', async (req, res) => {
+app.get('/api/dmNotes', loginRequired, async (req, res) => {
     const allNotes = await DMNote.findAll({order: [['dmNoteId', 'DESC']]})
     res.json(allNotes);
 });
