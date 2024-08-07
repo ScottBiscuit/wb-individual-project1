@@ -7,7 +7,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
 
-export default function ModalDelDMNote({ setDMNotes, sessionNotes, dmNote}) {
+export default function ModalDelDMNote({ setDMNotes, dmNotes, dmNote}) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -24,22 +24,22 @@ export default function ModalDelDMNote({ setDMNotes, sessionNotes, dmNote}) {
 
   const handleSubmit = () => {
 
-    axios.delete(`/api/sessionNotes/${dmNote.dmNoteId}/delete`, 
+    axios.delete(`/api/dmNotes/${dmNote.dmNoteId}/delete`, 
       { dmNoteId: formState.dmNoteId }).then((res) => {
 
         const deletedResData = dmNote.dmNoteId
 
-        function findDeleted(sessionNotes, deletedResData){
-          for(let i = 0; i < sessionNotes.length; i++){
-            if(sessionNotes[i].dmNoteId === deletedResData){
+        function findDeleted(dmNotes, deletedResData){
+          for(let i = 0; i < dmNotes.length; i++){
+            if(dmNotes[i].dmNoteId === deletedResData){
               console.log(i)
               return i;
             }
           }
         }
-        sessionNotes.splice(findDeleted(sessionNotes, deletedResData), 1)
+        dmNotes.splice(findDeleted(dmNotes, deletedResData), 1)
 
-        setNotes([...sessionNotes])
+        setDMNotes([...dmNotes])
 
         handleClose()
       })
