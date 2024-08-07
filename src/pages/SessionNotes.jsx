@@ -7,6 +7,7 @@ import { Button, ListGroup, Table } from 'react-bootstrap';
 import AccordionSesItem from '../components/accordion/AccordionSesItem';
 import AccordionDMItem from '../components/accordion/AccordionDMItem';
 import ModalAddSesNote from '../components/accordion/ModalAddSesNote';
+import ModalAddDMNote from '../components/accordion/ModalAddDMNote';
 import { useState } from 'react';
 
 export default function SessionNotes() {
@@ -27,7 +28,7 @@ export default function SessionNotes() {
         <Accordion.Item eventKey='0' className="mb-3 bg-warning-subtle">
             <Accordion.Header  className='mb-3'>Future Session Ideas</Accordion.Header>
             <Accordion.Body>
-              <Button as="input" type="button" value="Add Ideas" className='bg-success'/>
+              <ModalAddDMNote dmNotes={dmNotes} setDMNotes={setDMNotes} />
               <ListGroup className='mb-3'>
                 {dmNotesList}
               </ListGroup>

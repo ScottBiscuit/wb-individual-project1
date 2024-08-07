@@ -114,7 +114,7 @@ export default function ModalAddPartyRow({ party, setParty }) {
                 />
             </Form.Group>
 
-            <Form.Group className="mb-3" >
+            {/* <Form.Group className="mb-3" >
               <Form.Label>Image:</Form.Label>
               <Form.Control 
                 as="input" 
@@ -123,7 +123,7 @@ export default function ModalAddPartyRow({ party, setParty }) {
                 onChange={handleChange} 
                 value={formState.pcImg} 
                 />
-            </Form.Group>
+            </Form.Group> */}
 
           </Form>
         </Modal.Body>

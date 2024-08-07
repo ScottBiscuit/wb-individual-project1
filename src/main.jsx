@@ -6,7 +6,6 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import MainNav from './components/MainNav.jsx';
 import PartyTabs from './pages/PartyTabs.jsx';
 import SessionNotes from './pages/SessionNotes.jsx';
-import LoginPage from './pages/LoginPage.jsx';
 import Home from './pages/Home.jsx';
 import ErrorPage from './pages/ErrorPage.jsx'
 import 'bootstrap/dist/css/bootstrap.css';
@@ -16,7 +15,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />} errorElement={<ErrorPage />}>
       <Route index element={<Home />} />
-      <Route path='login' element={<LoginPage />} />
+      {/* <Route path='oops' element={<LoginPage />} /> */}
       <Route path='party' element={<PartyTabs />} loader={async () => {
         const res = await axios.get('/api/party')
         return {party: res.data}
