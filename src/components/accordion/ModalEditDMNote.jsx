@@ -58,9 +58,10 @@ return (
       <Modal.Body>
         <Form>
           <Form.Group className="mb-3" >
-            <Form.Label>Session Number</Form.Label>
+            <Form.Label>Future Session Ideas</Form.Label>
             <Form.Control 
-              as="input" 
+              as="textarea" 
+              rows={6}  
               name="dmNoteIdeas" 
               onChange={handleChange} 
               value={formState.dmNoteIdeas}
