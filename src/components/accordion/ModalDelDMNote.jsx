@@ -53,9 +53,9 @@ return (
 
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Delete Session Notes</Modal.Title>
+        <Modal.Title>Delete Future Session Idea</Modal.Title>
       </Modal.Header>
-      <Modal.Body>Are you sure you want to delete this session note?</Modal.Body>
+      <Modal.Body>Are you sure you want to delete this Future Session Idea?</Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
           Cancel

@@ -179,7 +179,7 @@ app.post('/api/dmNotes', loginRequired, async (req, res) => {
     res.json(newDMNote);
 });
 
-app.put('/api/dmNotes/:sesId', loginRequired, async (req, res) => {
+app.put('/api/dmNotes/:dmNoteId', loginRequired, async (req, res) => {
     const { dmNoteId } = req.params;
     const { dmNoteIdeas } = req.body;
  

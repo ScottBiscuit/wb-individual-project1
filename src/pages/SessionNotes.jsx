@@ -1,9 +1,7 @@
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Accordion from 'react-bootstrap/Accordion';
 import { useLoaderData } from 'react-router-dom';
-import { Button, ListGroup, Table } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
 import AccordionSesItem from '../components/accordion/AccordionSesItem';
 import AccordionDMItem from '../components/accordion/AccordionDMItem';
 import ModalAddSesNote from '../components/accordion/ModalAddSesNote';
