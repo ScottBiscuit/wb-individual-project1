@@ -1,5 +1,5 @@
 import { Link, useRouteError } from 'react-router-dom';
-import { Image, Card } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
 export default  function ErrorPage() {
   const error = useRouteError();

@@ -1,30 +1,7 @@
-// import { Container, Nav, Navbar } from "react-bootstrap";
-
-// export default function MainNav({ brand, rightLinks}) {
-//     return (
-//         <Navbar expand='lg' className='bg-success navbar-dark'>
-//             <Container fluid>
-//                 <Navbar.Brand href="/">{brand}</Navbar.Brand>
-//                 <Navbar.Toggle />
-//                 <Navbar.Collapse>
-//                     <Nav className="me-auto">
-//                         {rightLinks.map(({ url, text }, index) => (
-//                             <Nav.Link key={index} href={url}>
-//                                 {text}
-//                             </Nav.Link>
-//                         ))}
-//                     </Nav>
-//                 </Navbar.Collapse>
-//             </Container>
-//         </Navbar>
-//     );
-// }
-
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import LogoutButton from './LogoutButton';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import LogInOutButton from './login/LogInOutButton';

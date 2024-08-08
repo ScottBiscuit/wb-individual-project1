@@ -33,6 +33,25 @@ function loginRequired(req, res, next) {
     }
 });
 
+app.post('/api/signup',  async (req, res) => {
+    const { userId, email, password } = req.body;
+    const check = await User.findOne({ where: { email: email } });
+    const newUser = await User.create({
+       
+        userId: userId,
+        email: email,
+        password: password
+    })
+        // if no value is provided in req.body, use default values
+        if (check === email) {
+            res.json({ error: `Email entered already exists`})
+        } else {
+            req.session.userId = newUser.userId;
+            res.json({ success: true });
+        } 
+});
+
+
 app.post('/api/logout', loginRequired, (req, res) => {
     req.session.destroy();
     res.json({ success: true })

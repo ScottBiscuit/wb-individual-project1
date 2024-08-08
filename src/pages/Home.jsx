@@ -18,6 +18,15 @@ export default function Home() {
       navigate('/party');
     }
   };
+  const handleSignup = async (event, formData) => {
+    event.preventDefault();
+
+    const res = await axios.post('/api/signup', formData);
+
+    if (res.data.success) {
+      navigate('/party');
+    }
+  };
 
   return (
     <>
@@ -26,7 +35,7 @@ export default function Home() {
         <Card.Body>
           <Card.Title className='bg-success-subtle p-2'>Log In</Card.Title>
           <Card.Text className='p-2'>
-          <LoginForm onLogin={handleLogin}/>
+          <LoginForm onLogin={handleLogin} />
           </Card.Text>
         </Card.Body>
       </Card>
@@ -34,7 +43,7 @@ export default function Home() {
         <Card.Body>
           <Card.Title className='bg-success-subtle p-2'>Sign Up</Card.Title>
           <Card.Text className='p-2'>
-          <SignupForm />
+          <SignupForm onSignup={handleSignup} />
           </Card.Text>
         </Card.Body>
       </Card>

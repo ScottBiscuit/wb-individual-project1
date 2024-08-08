@@ -6,69 +6,46 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 
-export default function SignupForm() {
-  const [validated, setValidated] = useState(false);
-
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
-    setValidated(true);
-  };
+export default function SignupForm({ onSignup }) {
+  const [emailValue, setEmailValue] = useState('');
+  const [passwordValue, setPasswordValue] = useState('');
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form 
+      onSubmit={(e) => {
+        onSignup(e, {
+          email: emailValue,
+          password: passwordValue,
+        })
+      }}
+      >
       <Row className="mb-3">
-        <Form.Group as={Col}  controlId="validationCustom01">
+        <Form.Group as={Col}>
           <Form.Label>Email</Form.Label>
           <Form.Control 
           required 
+          id='emailSignup'
           type="email" 
-          placeholder="name@example.com" />
-          <Form.Control.Feedback type="invalid">
-              Please enter a valid email address.
-            </Form.Control.Feedback>
+          placeholder="name@example.com" 
+          onChange={(e) => setEmailValue(e.target.value)}
+          />
         </Form.Group>
     </Row>
-    <Row className="mb-3">
-        <Form.Group as={Col}  controlId="validationCustom02">
+    <Row>
+        <Form.Group as={Col}>
           <Form.Label>Password</Form.Label>
           <Form.Control
             required
+            id='passwordSignup'
             type="password"
             placeholder="password"
+            onChange={(e) => setPasswordValue(e.target.value)}
           />
-          <Form.Control.Feedback type="invalid">
-              Please enter a password.
-            </Form.Control.Feedback>
         </Form.Group>
     </Row>
-    <Row className="mb-3">
-        <Form.Group as={Col}  controlId="validationCustomUsername">
-          <Form.Label>Username</Form.Label>
-          <InputGroup hasValidation>
-            <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-            <Form.Control
-              type="text"
-              placeholder="Username"
-              aria-describedby="inputGroupPrepend"
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              Please choose a username.
-            </Form.Control.Feedback>
-          </InputGroup>
-        </Form.Group>
-      </Row>
       <Row className="mb-3">
-        
       </Row>
-    
-      <Button type="submit" variant="success">Sign Up</Button>
+      <Button type="submit" variant="success" >Sign Up</Button>
     </Form>
   );
 }
-

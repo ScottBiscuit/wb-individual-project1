@@ -51,11 +51,11 @@ User.init(
     password: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    userRole: {
-        type: DataTypes.STRING,
-        allowNull: false,
     }
+    // userRole: {
+    //     type: DataTypes.STRING,
+    //     // allowNull: false,
+    // }
   },
   {
     modelName: 'user',

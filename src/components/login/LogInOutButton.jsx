@@ -1,14 +1,6 @@
 import React from 'react'
-
-// export default function LogInOutButton({ onLogout }) {
-//     return (
-//       <form onSubmit={onLogout}>
-//         <button type="submit">Log Out</button>
-//       </form>
-//     );
-//   }
-  import { useEffect, useState } from 'react';
-  import Button from 'react-bootstrap/Button';
+import { useEffect, useState } from 'react';
+import Button from 'react-bootstrap/Button';
   
   export default function LogInOutButton({ onLogout }) {
 
@@ -17,7 +9,8 @@ import React from 'react'
       <Button
         variant="outline-light"
         type='submit'
-      >Log Out
+      >
+        Log Out
       </Button>
       </form>
     );
