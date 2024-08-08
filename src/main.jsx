@@ -24,8 +24,7 @@ const router = createBrowserRouter(
         const res = await axios.get('/api/sessionNotes')
         const res2 = await axios.get('/api/dmNotes')
         return {sessionNotes: res.data, dmNotes: res2.data}
-      }}
-      />
+      }}/>
     </Route>
   )
 )

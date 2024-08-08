@@ -35,9 +35,9 @@ const sessionNotesToCreate = [
 ];
 
 const dmNotesToCreate = [
+    {dmNoteIdeas: 'Kittens attack!!!!'},
     {dmNoteIdeas: 'The Gnome they saved was the son of the town Major - extra reward'},
     {dmNoteIdeas: 'One of the Goblins escaped and informed the leader - ambush later'},
-    {dmNoteIdeas: 'Let party loot a cursed item that warns someone else of the party location'},
     {dmNoteIdeas: 'Goblins that attacked were linked to Beast Boy'},
     {dmNoteIdeas: 'Rumours are spreading in town of howls in the forest to the NW'}
 ];

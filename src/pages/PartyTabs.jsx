@@ -1,13 +1,12 @@
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card'
 import Row from 'react-bootstrap/Row';
 import Stack from 'react-bootstrap/Stack';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { useState } from 'react';
-import axios from 'axios';
-import { Link, useLoaderData } from 'react-router-dom';
-import { Button } from 'react-bootstrap'
+import { useLoaderData } from 'react-router-dom';
 import ModalAddPartyRow from '../components/tabs/ModalAddPartyRow'
 import ModalDelPartyRow from '../components/tabs/ModalDelPartyRow'
 import ModalEditPartyRow from '../components/tabs/ModalEditPartyRow'
@@ -118,7 +117,9 @@ export default function PartyTabs() {
     ));
 
   return (
-    <Container fluid>
+    <Card>
+        <Card.Img src="../images/game_background.jpg" alt="Card image" className='opacity-25' height='100%'/>
+        <Card.ImgOverlay>
         <Tabs defaultActiveKey="profile" className="mb-3 bg-success-subtle" justify>
             <Tab eventKey="blank" title="" disabled></Tab>
             <Tab eventKey="profile" title="Basic Info">{playerBasicRows}</Tab>
@@ -129,6 +130,7 @@ export default function PartyTabs() {
         <Row>
             <ModalAddPartyRow party={party} setParty={setParty} />
         </Row>
-    </Container>
+        </Card.ImgOverlay>
+    </Card>
   );
 }

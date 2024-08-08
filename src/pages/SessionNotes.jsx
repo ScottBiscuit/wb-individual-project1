@@ -1,5 +1,6 @@
 import Container from 'react-bootstrap/Container';
 import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
 import { useLoaderData } from 'react-router-dom';
 import { ListGroup } from 'react-bootstrap';
 import AccordionSesItem from '../components/accordion/AccordionSesItem';
@@ -21,9 +22,12 @@ export default function SessionNotes() {
   ));
 
   return (
-    <Container >
+    // <Container >
+      <Card>
+        <Card.Img src="../images/white_bg_green_dice.jpg" alt="Card image" className='opacity-50'/>
+        <Card.ImgOverlay>
       <Accordion defaultActiveKey={['0']} alwaysOpen>
-        <Accordion.Item eventKey='0' className="mb-3 bg-warning-subtle">
+        <Accordion.Item eventKey='0' className="mb-3 bg-success-subtle">
             <Accordion.Header  className='mb-3'>Future Session Ideas</Accordion.Header>
             <Accordion.Body>
               <ModalAddDMNote dmNotes={dmNotes} setDMNotes={setDMNotes} />
@@ -37,7 +41,9 @@ export default function SessionNotes() {
         {sessionNotesList}
         </div>
       </Accordion>
-    </Container>
+      </Card.ImgOverlay>
+    </Card>
+    // </Container>
   );
 }
 
